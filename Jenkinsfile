@@ -34,7 +34,10 @@ stages{
 			// Run the maven build and upload artifacts to nexus repository
 			echo "sh mvn test"
 			sh "mvn test"
+			step([$class: 'CucumberReportPublisher', fileExcludePattern: '', fileIncludePattern: '', ignoreFailedTests: false, jenkinsBasePath: '', jsonReportDirectory: '', missingFails: false, parallelTesting: false, pendingFails: false, skippedFails: false, undefinedFails: false])
 		}
+		
+		
 	}
 	
 	stage ('cleanup'){	
